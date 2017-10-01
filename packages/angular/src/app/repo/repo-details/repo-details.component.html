@@ -1,0 +1,10 @@
+<p>
+  <button class="btn btn-link" [routerLink]="['/repos', repo.owner.login]">
+    <span>Back</span>
+  </button>
+  <a [routerLink]="['/repos', repo.owner.login]">
+    <span>Back</span>
+  </a>
+
+  {{repo|json}}
+</p>

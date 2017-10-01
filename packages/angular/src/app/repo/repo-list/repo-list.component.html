@@ -1,0 +1,12 @@
+<div>
+  <h1>Repos</h1>
+  <ul>
+    <li *ngFor="let repo of repos">
+      <a [routerLink]="['/repos', repo.owner.login, repo.name]">
+        <span>{{repo.name}}</span>
+      </a>
+    </li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>
