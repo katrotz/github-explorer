@@ -1,11 +1,20 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { MockBackend } from '@angular/http/testing';
+import { HttpModule, XHRBackend } from '@angular/http';
 
+import { RepoDetailsResolverService } from './repo-details-resolver.service';
 import { GithubService } from './github.service';
 
-describe('GithubService', () => {
+describe('RepoDetailsResolverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GithubService]
+      imports: [
+        HttpModule
+      ],
+      providers: [
+        GithubService,
+        { provide: XHRBackend, useClass: MockBackend }
+      ]
     });
   });
 

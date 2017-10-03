@@ -1,3 +1,6 @@
+/**
+ * The github repo object type
+ */
 export class Repo {
   archive_url: string;
   assignees_url: string;

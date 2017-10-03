@@ -10,7 +10,7 @@ export const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/repos/heremaps', // Defaults to `heremaps` repos
+    redirectTo: '/repos/heremaps', // Defaults to `heremaps` user
     pathMatch: 'full'
   },
   {
@@ -22,7 +22,7 @@ export const appRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes, {
-      enableTracing: true,
+      enableTracing: false,
       preloadingStrategy: PreloadAllModules
     })
   ],

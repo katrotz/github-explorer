@@ -1,25 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpModule } from '@angular/http';
 
 import { RepoComponent } from './repo.component';
+import { GithubService } from '../github.service';
 
 describe('RepoComponent', () => {
-  let component: RepoComponent;
-  let fixture: ComponentFixture<RepoComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RepoComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        RepoComponent
+      ],
+      imports: [
+        HttpModule,
+        RouterTestingModule
+      ],
+      providers: [
+        GithubService
+      ]
+    }).compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RepoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should create the component', async(() => {
+    const fixture = TestBed.createComponent(RepoComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
 });

@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+.ellipsis-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn.btn-dark, .btn.btn-dark:visited, .btn.btn-dark:active {
+  color: #313131;
+  border-color: #313131;
+  box-shadow: 0 0 0 0 transparent inset;
+}
+
+.btn.btn-dark:hover {
+  background-color: transparent;
+}
+
+.btn.btn-link.btn-dark, .btn.btn-link.btn-dark:visited, .btn.btn-link.btn-dark:active {
+  color: #313131;
+  border-color: transparent;
+}
+
+.btn-link.btn-dark {
+  background-color: transparent;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}

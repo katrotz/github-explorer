@@ -1,0 +1,15 @@
+.repo-description {
+  height: 50px;
+}
+
+form, label.repositories-filter, input.repositories-filter {
+  width: 100%;
+}
+
+.card-sub-title {
+  min-height: 28px;
+}
+
+.toggle-switch {
+  margin-right: 0;
+}

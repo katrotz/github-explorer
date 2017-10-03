@@ -3,10 +3,10 @@ import { MockBackend } from '@angular/http/testing';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { RepoDetailsResolverService } from './repo-details-resolver.service';
+import { RepoLanguagesResolverService } from './repo-languages-resolver.service';
 import { GithubService } from './github.service';
 
-describe('RepoDetailsResolverService', () => {
+describe('RepoLanguagesResolverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -14,14 +14,14 @@ describe('RepoDetailsResolverService', () => {
         RouterTestingModule
       ],
       providers: [
-        RepoDetailsResolverService,
+        RepoLanguagesResolverService,
         GithubService,
         { provide: XHRBackend, useClass: MockBackend }
       ]
     });
   });
 
-  it('should be created', inject([RepoDetailsResolverService], (service: RepoDetailsResolverService) => {
+  it('should be created', inject([RepoLanguagesResolverService], (service: RepoLanguagesResolverService) => {
     expect(service).toBeTruthy();
   }));
 });

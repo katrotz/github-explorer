@@ -1,12 +1,102 @@
-<div>
-  <h1>Repos</h1>
-  <ul>
-    <li *ngFor="let repo of repos">
-      <a [routerLink]="['/repos', repo.owner.login, repo.name]">
-        <span>{{repo.name}}</span>
+<section *ngIf="!errorState">
+  <!--Content top area. Normally should have been extracted as a separate component.-->
+  <div class="row flex-items-xs-between">
+    <div class="col-xs-6">
+      <h3><span class="labellabel-purple">{{githubLogin}}</span></h3>
+    </div>
+    <div class="col-xs-6 align-right" *ngIf="filteredRepos.length">
+      <a [href]="filteredRepos[0].owner.html_url" target="_blank" [title]="filteredRepos[0].owner.login">
+        <img [src]="filteredRepos[0].owner.avatar_url" *ngIf="filteredRepos[0].owner.avatar_url" width="80px"/>
       </a>
-    </li>
-  </ul>
+    </div>
+  </div>
 
-  <router-outlet></router-outlet>
-</div>
+  <!--Content filters-->
+  <div class="row flex-items-xs-between flex-items-xs-middle">
+    <div class="col-md-4 col-xs-12">
+      <form class="search" (submit)="onSearchApply(repositories_filter.value)">
+        <div class="form-group row">
+          <div class="col-xs-12">
+            <input class="form-control" type="text" placeholder="Filter repositories" #repositories_filter (blur)="onSearchApply(repositories_filter.value)">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4 col-xs-12 align-right">
+      <div class="toggle-switch">
+        <input type="checkbox" id="show-as-cards" [checked]="showAsCards" (change)="setShowAsCards(show_as_cards.checked)" #show_as_cards>
+        <label for="show-as-cards">Show as cards</label>
+      </div>
+    </div>
+  </div>
+
+  <!--Repositories list as cards-->
+  <div class="row" *ngIf="showAsCards">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" *ngFor="let repo of filteredRepos">
+      <div class="card">
+        <div class="card-block">
+          <div class="ellipsis-text">{{repo.name}}</div>
+          <div class="card-sub-title">
+            <span class="badge badge-purple" *ngIf="repo.language">{{repo.language}}</span>
+          </div>
+          <div class="card-text">
+            <p class="repo-description p7">
+              {{repo.description}}
+            </p>
+            <!--<div class="repo-labels">
+              <a [href]="repo.html_url" target="_blank" class="label clickable">
+                Stars <span class="badge">{{repo.stargazers_count}}</span>
+              </a>
+              <a [href]="repo.html_url" target="_blank" class="label clickable">
+                Watch <span class="badge">{{repo.watchers_count}}</span>
+              </a>
+              <a [href]="repo.html_url" target="_blank" class="label clickable">
+                Issues <span class="badge">{{repo.open_issues_count}}</span>
+              </a>
+            </div>-->
+          </div>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/repos', repo.owner.login, repo.name]" class="btn btn-sm">View</a>
+          <!--<a [href]="repo.html_url" [title]="repo.name" class="btn btn-sm btn-link btn-dark" target="_blank">Github</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Repositories list as table-->
+  <div class="row" *ngIf="!showAsCards">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Language</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let repo of filteredRepos">
+          <td class="left"><a [routerLink]="['/repos', repo.owner.login, repo.name]" class="btn btn-sm btn-link" *ngIf="repo.owner">{{repo.name}}</a></td>
+          <td class="left">{{repo.description}}</td>
+          <td class="left" style="white-space: nowrap">{{repo.language}}</td>
+        </tr>
+        <tr *ngIf="!filteredRepos.length">
+          <td colspan="3">Ooops, no repository found</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!--Component error state-->
+<section *ngIf="errorState">
+  <div class="row">
+    <div class="col-xs-4 offset-xs-4 align-center">
+      <h1>404</h1>
+      <p>Failed to fetch repos for the login "{{githubLogin}}"</p>
+      <p><a [routerLink]="['/']">I am feeling lucky</a></p>
+    </div>
+  </div>
+</section>

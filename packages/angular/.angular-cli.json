@@ -9,12 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
-        {
-          "glob": "*.css",
-          "input": "./node_modules/clarity-ui",
-          "output": ""
-        }
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -24,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/clarity-ui/clarity-ui.min.css",
         "styles.css"
       ],
       "scripts": [],

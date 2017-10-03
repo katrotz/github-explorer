@@ -1,1 +1,25 @@
-<router-outlet></router-outlet>
+<section class="main-container">
+  <!--Header-->
+  <header class="header header-1">
+    <div class="branding">
+      <a [routerLink]="['/']" class="nav-link">
+        <span class="title">
+          GITHUB <span class="p6 color-faded">EXPLORER</span>
+        </span>
+      </a>
+    </div>
+
+    <form class="search" (submit)="onGithubLoginChange(github_login.value)">
+      <label for="github_login">
+        <input id="github_login" type="text" placeholder="Change github account" #github_login (keyup.enter)="github_login.value = ''"/>
+      </label>
+    </form>
+  </header>
+
+  <!--Main content-->
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

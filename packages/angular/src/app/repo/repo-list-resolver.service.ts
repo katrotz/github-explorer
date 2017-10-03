@@ -1,17 +1,19 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 
 import { GithubService } from './github.service';
 import { Repo } from './repo';
 
 @Injectable()
-export class RepoListResolverService implements Resolve<Repo[]> {
+export class RepoListResolverService implements Resolve<Repo[] | Response> {
   constructor(private githubService: GithubService, private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Repo[]> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Repo[] | Response> {
     const userId = route.paramMap.get('user');
 
     return this.githubService.fetchRepos(userId)
@@ -22,9 +24,8 @@ export class RepoListResolverService implements Resolve<Repo[]> {
         throw new Error(`Failed to resolve repos list for user ${userId}`);
       })
 
-      .catch(error => {
-        console.log(error);
-        return Observable.of<Repo[]>([]);
+      .catch((response) => {
+        return Observable.of(response);
       });
   }
 }

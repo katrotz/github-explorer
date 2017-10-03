@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { RepoComponent } from './repo/repo.component';
 import { RepoListComponent } from './repo-list/repo-list.component';
-import { RepoListResolverService } from './repo-list-resolver.service';
 import { RepoDetailsComponent } from './repo-details/repo-details.component';
+import { RepoListResolverService } from './repo-list-resolver.service';
 import { RepoDetailsResolverService } from './repo-details-resolver.service';
+import { RepoLanguagesResolverService } from './repo-languages-resolver.service';
 
 const repoRoutes: Routes = [
   {
@@ -23,7 +24,8 @@ const repoRoutes: Routes = [
         path: ':user/:repo',
         component: RepoDetailsComponent,
         resolve: {
-          repo: RepoDetailsResolverService
+          repo: RepoDetailsResolverService,
+          languages: RepoLanguagesResolverService
         }
       }
     ]

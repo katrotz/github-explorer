@@ -1,10 +1,87 @@
-<p>
-  <button class="btn btn-link" [routerLink]="['/repos', repo.owner.login]">
-    <span>Back</span>
-  </button>
-  <a [routerLink]="['/repos', repo.owner.login]">
-    <span>Back</span>
-  </a>
+<section>
+  <!--Content top area. Normally should have been extracted as a separate component.-->
+  <div class="row flex-items-xs-between">
+    <div class="col-xs-6">
+      <button class="btn btn-sm btn-primary" [routerLink]="['/repos', repo.owner.login]">Back</button>
+    </div>
+    <div class="col-xs-6 align-right">
+      <a [href]="repo.owner.html_url" target="_blank" [title]="repo.owner.login">
+        <img [src]="repo.owner.avatar_url" *ngIf="repo.owner.avatar_url" width="80px"/>
+      </a>
+    </div>
+  </div>
 
-  {{repo|json}}
-</p>
+  <!--Main repository information-->
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>
+        <span>{{repo.name}}</span> <a [href]="repo.html_url" target="_blank" class="btn btn-link btn-sm">Github</a>
+      </h3>
+      <div class="p3">
+        {{repo.description}}
+      </div>
+    </div>
+  </div>
+
+  <!--Repository details-->
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+
+      <h5>Languages</h5>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Bytes</th>
+            <th>Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let language of repoLanguages">
+            <td>{{language.name}}</td>
+            <td>{{language.bytes}}</td>
+            <td>{{language.share}}%</td>
+          </tr>
+          <tr *ngIf="!repoLanguages.length">
+            <td colspan="3">No language detected</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-4 col-sm-12">
+
+      <h5>Details</h5>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="left"><b>Created</b></td>
+            <td class="left">{{repo.created_at | date:'medium'}}</td>
+          </tr>
+          <tr>
+            <td class="left"><b>Updated</b></td>
+            <td class="left">{{repo.updated_at | date:'medium'}}</td>
+          </tr>
+          <tr>
+            <td class="left"><b>Forks</b></td>
+            <td class="left"><span class="badge">{{repo.forks_count}}</span></td>
+          </tr>
+          <tr>
+            <td class="left"><b>Stars</b></td>
+            <td class="left"><span class="badge">{{repo.stargazers_count}}</span></td>
+          </tr>
+          <tr>
+            <td class="left"><b>Watchers</b></td>
+            <td class="left"><span class="badge">{{repo.watchers_count}}</span></td>
+          </tr>
+          <tr>
+            <td class="left"><b>Issues</b></td>
+            <td class="left"><span [ngClass]="['badge', 'badge-' + issuesStatusClass(repo.open_issues_count)]">{{repo.open_issues_count}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
