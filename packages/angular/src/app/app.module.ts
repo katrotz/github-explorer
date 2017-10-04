@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
-
+document.getElementById('baseHref').setAttribute('href', environment.baseHref);
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,12 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_BASE_HREF,
+      useValue: environment.baseHref
+    }
+  ],
   bootstrap: [
     AppComponent
   ]
