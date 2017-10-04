@@ -5,7 +5,7 @@
 Please note that the preview versions might have routing issues due to relative path they are served from.
 In case of issues, please consider running the local server as described below.
 - [Angular](http://katrotz.space/cc/github-explorer/packages/angular/dist)
-- [React](http://katrotz.space/cc/github-explorer/packages/react-app/build/repos/heremaps)
+- [React](http://katrotz.space/cc/github-explorer/packages/react-app/build)
 - Vue (Unfortunately didn't make it)
 
 ## How to
@@ -53,4 +53,4 @@ which will execute `npm test` in each package. To test a specific package run
 - Unfortunately did not finish due to time constraints. Would have been linted using eslint.
 - Tests basic functionality with jest and enzyme
 - Uses the UI Library [Ant Design](https://ant.design/index-cn)
-- Live preview can be found [here](http://katrotz.space/cc/github-explorer/packages/react-app/build/repos/heremaps)
+- Live preview can be found [here](http://katrotz.space/cc/github-explorer/packages/react-app/build)
