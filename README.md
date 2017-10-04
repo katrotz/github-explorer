@@ -5,6 +5,7 @@
 - VueJS (x)
 
 ## How to
+It requires to have `node` greater than 8, `npm` version greater than 5 and [lerna](https://lernajs.io/) pre-installed
 #### Install
 Type the following command in the root directory of the monorepo.
 It will install the dependencies for all packages.
