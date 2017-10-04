@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "npm run test && npm run build",
+    "postinstall": "npm run build",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
