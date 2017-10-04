@@ -1,11 +1,14 @@
 # Github Explorer
 > Monorepo managed using `lerna`, containing implementations of a code challenge task using several front-end frameworks
-- Angular
-- React
+
+## Live preview
+- [Angular](http://katrotz.space/cc/github-explorer/packages/angular/dist)
+- [React](http://katrotz.space/cc/github-explorer/packages/react-app/build)
 - Vue (Unfortunately didn't make it)
 
 ## How to
-It requires to have `node` greater than 8, `npm` version greater than 5 and [lerna](https://lernajs.io/) pre-installed
+It requires npm package [lerna](https://lernajs.io/) globally pre-installed.
+Tested with `node@8`, `npm@5`.
 
 #### Install
 Type the following command in the root directory of the monorepo.
@@ -46,4 +49,4 @@ which will execute `npm test` in each package. To test a specific package run
 - Written in JSX|ES2015
 - Unfortunately did not finish due to time constraints. Would have been linted using eslint.
 - Uses the UI Library [Ant Design](https://ant.design/index-cn)
-- Live preview can be found [here](http://katrotz.space/github-explorer/angular)
+- Live preview can be found [here](http://katrotz.space/cc/github-explorer/packages/angular/dist/repos/what)
