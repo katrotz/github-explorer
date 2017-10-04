@@ -8,5 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
+document.getElementById('baseHref').setAttribute('href', environment.baseHref);
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
