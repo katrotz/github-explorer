@@ -13,9 +13,11 @@ import { routes } from './routes';
 
 const history = createBrowserHistory();
 
-const baseHref = process.env.NODE_ENV === 'production'
-  ? '/cc/github-explorer/packages/react-app/build'
-  : '/';
+// const baseHref = process.env.NODE_ENV === 'production'
+//   ? '/cc/github-explorer/packages/react-app/build'
+//   : '/';
+
+const baseHref = '/';
 
 ReactDOM.render(
     <LocaleProvider locale={ enUS }>
