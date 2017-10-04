@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
-document.getElementById('baseHref').setAttribute('href', environment.baseHref);
+
 @NgModule({
   declarations: [
     AppComponent,
