@@ -13,9 +13,11 @@ import { routes } from './routes';
 
 const history = createBrowserHistory();
 
+const baseHref = '/' + window.location.pathname.split('/')[1] + '/';
+
 ReactDOM.render(
     <LocaleProvider locale={ enUS }>
-        <Router history={ history } routes={ routes }>
+        <Router history={ history } routes={ routes } basename={ baseHref }>
             { renderRoutes(routes) }
         </Router>
     </LocaleProvider>,

@@ -10,5 +10,10 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    (function() {
+      document.getElementById('baseHref').href = '/' + window.location.pathname.split('/')[1] + "/";
+    })();
+  </script>
 </body>
 </html>
