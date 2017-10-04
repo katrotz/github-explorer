@@ -1,0 +1,11 @@
+.repo-list .ant-card-body {
+    height: 150px;
+    overflow: hidden;
+}
+
+.repo-list table th {
+    min-width: 100px;
+}
+.repo-list table tbody {
+    background-color: white;
+}

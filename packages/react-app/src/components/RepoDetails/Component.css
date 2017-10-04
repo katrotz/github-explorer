@@ -1,0 +1,11 @@
+.small {
+  font-size: 0.6em;
+}
+
+table {
+  margin-top: 10px;
+}
+
+table tbody {
+  background-color: white;
+}

@@ -1,0 +1,33 @@
+.app {
+  min-height: 100%;
+}
+
+.app .ant-layout-header{
+  background-color: #313131;
+  height: 60px;
+  line-height: 60px;
+}
+
+.branding a {
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.branding a:active, .branding a:focus, .branding a:hover {
+  text-decoration: none;
+}
+
+.branding .sub-title {
+  color: #777777;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .03em;
+  line-height: 12px;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.app-content {
+  padding: 24px;
+}
